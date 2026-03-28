@@ -1,0 +1,24 @@
+services:
+  # FastAPI Backend
+  - type: web
+    name: movie-recommender-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: TMDB_API_KEY
+        sync: false
+
+  # Streamlit Frontend (if deploying both)
+  - type: web
+    name: movie-recommender-frontend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
