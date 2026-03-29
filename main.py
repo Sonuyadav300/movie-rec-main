@@ -9,7 +9,19 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from fastapi import FastAPI
 
+app = FastAPI()
+
+# Add this route:
+@app.get("/")
+def read_root():
+    return {
+        "message": "Movie Recommendation API is live!",
+        "documentation": "/docs"
+    }
+
+# Your other endpoints (e.g., @app.get("/recommend")) go below...
 
 # =========================
 # ENV
