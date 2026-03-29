@@ -10,18 +10,38 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+app = FastAPI(title="Movie Recommendation API")
 
-# Add this route:
+# Add CORS middleware if needed
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ADD THIS ROOT ROUTE
 @app.get("/")
-def read_root():
+def root():
     return {
-        "message": "Movie Recommendation API is live!",
-        "documentation": "/docs"
+        "status": "success",
+        "message": "Movie Recommendation API is running!",
+        "endpoints": {
+            "docs": "/docs",
+            "health": "/health",
+            "recommend": "/recommend"
+        }
     }
 
-# Your other endpoints (e.g., @app.get("/recommend")) go below...
+# Optional: Add a dedicated health check endpoint
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
+# Your existing endpoints below...
 
 # =========================
 # ENV
