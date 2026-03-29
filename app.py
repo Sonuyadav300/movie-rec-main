@@ -202,12 +202,11 @@ def parse_tmdb_search_to_cards(data, keyword: str, limit: int = 24):
 # SIDEBAR (clean)
 # =============================
 with st.sidebar:
-    st.markdown("## 🎬 Menu")
+    st.markdown("## Menu")
     if st.button("🏠 Home"):
         goto_home()
 
     st.markdown("---")
-    st.markdown("### 🏠 Home Feed (only home)")
     home_category = st.selectbox(
         "Category",
         ["trending", "popular", "top_rated", "now_playing", "upcoming"],
@@ -218,11 +217,7 @@ with st.sidebar:
 # =============================
 # HEADER
 # =============================
-st.title("🎬 Movie Recommender")
-st.markdown(
-    "<div class='small-muted'>Type keyword → dropdown suggestions + matching results → open → details + recommendations</div>",
-    unsafe_allow_html=True,
-)
+st.title("🎬 MoodFlix")
 st.divider()
 
 # ==========================================================
@@ -230,7 +225,7 @@ st.divider()
 # ==========================================================
 if st.session_state.view == "home":
     typed = st.text_input(
-        "Search by movie title (keyword)", placeholder="Type: avenger, batman, love..."
+        "Search movie ", placeholder="Type: avenger, batman, hulk..."
     )
 
     st.divider()
