@@ -467,19 +467,7 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # Footer
-    st.markdown(
-        """
-        <div style="text-align: center; color: #888; font-size: 0.8rem; padding: 10px 0;">
-            Made with ❤️ using Streamlit<br>
-            <a href="https://www.themoviedb.org/" target="_blank" style="color: #888;">
-                Powered by TMDB
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+ 
 
 # =============================
 # MAIN HEADER
@@ -493,7 +481,7 @@ st.markdown(
             🎬 MoodFlix
         </h1>
         <p style="color: #666; font-size: 1.1rem;">
-            Find the perfect movie for your mood
+            AI Based Movie Recommendations System
         </p>
     </div>
     """,
